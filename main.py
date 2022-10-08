@@ -18,9 +18,14 @@ df = pd.read_excel('data.xlsx')
 # Loop through the rows of the dataframe
 for index, row in df.iterrows():
     # Send mail.html (which makes use of images in mail_files) to the email address in the dataframe
+    # https://learn.microsoft.com/en-us/office/vba/api/outlook.mailitem
     mail = outlook.CreateItem(0)
 
     mail.To = row['Mail']
+    # mail.CC = row['CC']
+    # mail.BCC = row['BCC']
+
+    mail.From = 'arno.deceuninck@student.uantwerpen.be'
     mail.Subject = 'Subject'  # DON'T FORGET TO CHANGE THIS
 
     # Open the html file and read it
